@@ -55,7 +55,22 @@ public class PlayerManager
 
 		Player p = player.GetComponent<Player> ();
 		p.Index = index;
+
+		GameObject sacrificePanel = Resources.Load<GameObject> ("Prefabs/SacrificePanel");
+		GameObject sp =  GameObject.Instantiate (sacrificePanel);
+		sp.transform.SetParent (p.Canvas);
+		sp.transform.localScale = Vector3.one;
+		sp.transform.localRotation = Quaternion.identity;
+		p.panel = sp.GetComponent<SacrificePanel> ();
 		p.panel.Index = index;
+
+		GameObject hpPanel = Resources.Load<GameObject> ("Prefabs/HPPanel");
+		GameObject hpp =  GameObject.Instantiate (hpPanel);
+		hpp.transform.SetParent (p.Canvas);
+		hpp.transform.localScale = Vector3.one;
+		hpp.transform.localRotation = Quaternion.identity;
+		p.hpPanel = hpp.GetComponent<HPPanel> ();
+
 		return p;
 	}
 
