@@ -68,6 +68,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
+		public void SetWalkingSpeed(float walkingSpeed)
+		{
+			m_WalkSpeed = walkingSpeed;
+		}
+
 
         // Update is called once per frame
         private void Update()

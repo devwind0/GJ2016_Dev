@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour {
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour {
 	{
 		Debug.LogError ("You cut your eye " + Index.ToString());
 		//TODO do things when eyes are cut, play Cut Eye VFX, maybe not
+
 		//Destroy (Eye);
 	}
 
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour {
 	{
 		Debug.LogError ("You cut your leg " + Index.ToString());
 		//TODO do things when legs are cut, Play Cut Leg VFX, maybe not
-		//Destroy (Leg);
+		FirstPersonController controller = this.GetComponent<FirstPersonController>();
+		controller.SetWalkingSpeed (1.0f);
 	}
 }
