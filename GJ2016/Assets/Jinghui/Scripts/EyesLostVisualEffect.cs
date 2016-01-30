@@ -7,8 +7,8 @@ public class EyesLostVisualEffect : MonoBehaviour {
 	public Blur blurEffect;
 	public NoiseAndGrain noiseEffect;
 	public VignetteAndChromaticAberration vignetteEffect;
-	public GameObject boolPartical;
-
+	public GameObject bloodPartical;
+	public AudioSource audio;
 
 	public bool VisualEffectFlay{
 		get{ return m_visualEffectFlag; }
@@ -73,8 +73,12 @@ public class EyesLostVisualEffect : MonoBehaviour {
 		if (vignetteEffect != null) {
 			vignetteEffect.enabled = true;
 		}
-		if (boolPartical != null) {
-			boolPartical.SetActive (true);
+		if (bloodPartical != null) {
+			bloodPartical.SetActive (true);
+		}
+
+		if ( audio != null  && !audio.isPlaying) {
+			audio.Play ();
 		}
 	}
 
@@ -88,8 +92,9 @@ public class EyesLostVisualEffect : MonoBehaviour {
 		if (vignetteEffect != null) {
 			vignetteEffect.enabled = false;
 		}
-		if (boolPartical != null) {
-			boolPartical.SetActive (false);
+		if (bloodPartical != null) {
+			bloodPartical.SetActive (false);
 		}
+		if( audio != null ) audio.Stop ();
 	}
 }
