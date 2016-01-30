@@ -31,7 +31,16 @@ public class Organ : MonoBehaviour {
             }
         }
     }
-	
+
+    void Update()
+    {
+        OrganSlots slots = GetComponentInParent<OrganSlots>();
+        if (slots == null)
+            return;
+
+
+    }
+
 	// Update is called once per frame
 	public void OnSelectStart()
     {

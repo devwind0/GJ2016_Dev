@@ -21,7 +21,8 @@ public class CameraPick : MonoBehaviour {
     void OnTriggerEnter(Collider i_other)
     {
         Organ organ = i_other.GetComponent<Organ>();
-        if (organ == null)
+        OrganSlot slot = i_other.GetComponent<OrganSlot>();
+        if (organ == null && slot == null)
             return;
         organ.OnSelectStart();
     }
@@ -30,9 +31,11 @@ public class CameraPick : MonoBehaviour {
     void OnTriggerExit(Collider i_other)
     {
         Organ organ = i_other.GetComponent<Organ>();
-        if (organ == null)
+        OrganSlot slot = i_other.GetComponent<OrganSlot>();
+        if (organ == null && slot == null)
             return;
         organ.OnSelectEnd();
+
     }
 
 }
