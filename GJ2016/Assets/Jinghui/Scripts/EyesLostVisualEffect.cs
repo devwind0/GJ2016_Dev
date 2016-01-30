@@ -71,10 +71,17 @@ public class EyesLostVisualEffect : MonoBehaviour {
 			noiseTimer = 0.0f;
 		}
 
-		if (blurTimer < 4.0f) 
-		{
-			blurTimer += 0.4f;
+		blurTimer += Time.deltaTime;
+		if (blurTimer < blurFlickTime) {
 			blurEffect.iterations = (int)(blurTimer * 1.0f);
+		} else if (blurTimer > 3.0f * blurFlickTime && blurTimer < 4.0f * blurFlickTime) {
+			blurEffect.iterations = (int)((blurFlickTime - (blurTimer - blurFlickTime)) * 1.0f);
+		} else if (blurTimer > 4.0f * blurFlickTime && blurTimer < 7.0f * blurFlickTime) {
+			blurEffect.enabled = false;
+		}
+		else if( blurTimer > 7.0f * blurFlickTime){
+			blurEffect.enabled = true;
+			blurTimer = 0.0f;
 		}
 	}
 
