@@ -7,6 +7,16 @@ public class EyesLostVisualEffect : MonoBehaviour {
 	public Blur blurEffect;
 	public NoiseAndGrain noiseEffect;
 	public VignetteAndChromaticAberration vignetteEffect;
+	public GameObject boolPartical;
+
+
+	public bool VisualEffectFlay{
+		get{ return m_visualEffectFlag; }
+		set{ 
+			m_visualEffectFlag = value; 
+			if (value) EnableVisualEffect ();
+		}
+	}
 
 	public float blurFlickTime = 4.0f;
 	public float noiseFlickTime = 2.0f;
@@ -14,11 +24,22 @@ public class EyesLostVisualEffect : MonoBehaviour {
 	private float noiseTimer = 0.0f;
 	private float blurTimer = 0.0f;
 
-	void Start () {
+	private bool m_visualEffectFlag = false;
 
+	void Start () {
+		DisableVisualEffect ();
 	}
 
 	void Update () {
+		if (m_visualEffectFlag) {
+			UpdateVisualEffect ();
+		}
+		else {
+			DisableVisualEffect ();
+		}
+	}
+
+	private void UpdateVisualEffect(){
 		noiseTimer += Time.deltaTime;
 		if (noiseTimer < noiseFlickTime) 
 		{
@@ -40,6 +61,35 @@ public class EyesLostVisualEffect : MonoBehaviour {
 			blurTimer += 0.4f;
 			blurEffect.iterations = (int)(blurTimer * 1.0f);
 		}
+	}
 
+	private void EnableVisualEffect(){
+		if (blurEffect != null) {
+			blurEffect.enabled = true;
+		}
+		if (noiseEffect != null) {
+			noiseEffect.enabled = true;
+		}
+		if (vignetteEffect != null) {
+			vignetteEffect.enabled = true;
+		}
+		if (boolPartical != null) {
+			boolPartical.SetActive (true);
+		}
+	}
+
+	private void DisableVisualEffect(){
+		if (blurEffect != null) {
+			blurEffect.enabled = false;
+		}
+		if (noiseEffect != null) {
+			noiseEffect.enabled = false;
+		}
+		if (vignetteEffect != null) {
+			vignetteEffect.enabled = false;
+		}
+		if (boolPartical != null) {
+			boolPartical.SetActive (false);
+		}
 	}
 }
