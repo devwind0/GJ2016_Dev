@@ -33,15 +33,21 @@ public class SacrificePanel : MonoBehaviour {
 	public void OnCutHandButtonClicked()
 	{
 		PlayerManager.Singleton.CutHand (Index);
+		CutHandButton.interactable = false;
+		CutHandButton.onClick.RemoveListener(OnCutHandButtonClicked);
 	}
 
 	public void OnCutEyeButtonClicked()
 	{
 		PlayerManager.Singleton.CutEye (Index);
+		CutEyeButton.interactable = false;
+		CutEyeButton.onClick.RemoveListener(OnCutEyeButtonClicked);
 	}
 
 	public void OnCutLegButtonClicked()
 	{
 		PlayerManager.Singleton.CutLeg (Index);
+		CutLegButton.interactable = false;
+		CutLegButton.onClick.RemoveListener(OnCutLegButtonClicked);
 	}
 }

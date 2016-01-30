@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
 	public int CurseLevel { get; set; }
 	public int Index { get; set; }
+	public int HP { get; set; }
 
 	public SacrificePanel panel;
 
