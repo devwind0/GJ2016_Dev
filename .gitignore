@@ -11,6 +11,8 @@
 *.unityproj
 *.user
 *.userprefs
+*.dll
+*.info
 .DS_Store
 ArtifactReport.xml
 Builds

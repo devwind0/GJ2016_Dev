@@ -43,8 +43,9 @@ public class PlayerManager
 			Debug.LogError ("Player Null");
 		}
 
-		Player p = player.AddComponent<Player> ();
+		Player p = player.GetComponent<Player> ();
 		p.Index = index;
+		p.panel.Index = index;
 		return p;
 	}
 
@@ -58,7 +59,7 @@ public class PlayerManager
 	public void CutEye(int index)
 	{
 		Player player = players[index];
-		player.CutLeg ();
+		player.CutEye ();
 		CurseOthers (index);
 	}
 

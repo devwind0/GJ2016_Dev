@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	public int CurseLevel { get; set; }
 	public int Index { get; set; }
 
+	public SacrificePanel panel;
+
 	public void Cursed()
 	{
 		Debug.Log ("You GOT CURSED");
