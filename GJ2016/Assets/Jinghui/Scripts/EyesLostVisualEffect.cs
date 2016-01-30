@@ -4,22 +4,31 @@ using UnityStandardAssets.ImageEffects;
 
 public class EyesLostVisualEffect : MonoBehaviour {
 
-	public Blur blurEffect;
-	public NoiseAndGrain noiseEffect;
-	public VignetteAndChromaticAberration vignetteEffect;
+	public Camera camera;
+
 	public GameObject bloodPartical;
 	public AudioSource audio;
 
-	public bool VisualEffectFlay{
+	public bool EyesLostVisualEffectFlag{
 		get{ return m_visualEffectFlag; }
 		set{ 
 			m_visualEffectFlag = value; 
-			if (value) EnableVisualEffect ();
+			if (value) {
+				EnableVisualEffect ();
+			} 
+			else {
+				DisableVisualEffect ();
+			}
+
 		}
 	}
 
 	public float blurFlickTime = 4.0f;
 	public float noiseFlickTime = 2.0f;
+
+	private Blur blurEffect;
+	private NoiseAndGrain noiseEffect;
+	private VignetteAndChromaticAberration vignetteEffect;
 
 	private float noiseTimer = 0.0f;
 	private float blurTimer = 0.0f;
@@ -27,7 +36,13 @@ public class EyesLostVisualEffect : MonoBehaviour {
 	private bool m_visualEffectFlag = false;
 
 	void Start () {
-		DisableVisualEffect ();
+			if (camera != null) {
+				blurEffect = camera.gameObject.GetComponent<Blur> ();
+				noiseEffect = camera.gameObject.GetComponent<NoiseAndGrain> ();
+				vignetteEffect = camera.gameObject.GetComponent<VignetteAndChromaticAberration> ();
+			}
+
+			DisableVisualEffect ();
 	}
 
 	void Update () {
@@ -63,7 +78,16 @@ public class EyesLostVisualEffect : MonoBehaviour {
 		}
 	}
 
-	private void EnableVisualEffect(){
+	public void SetBloodEffectLayer( int index ){
+		bloodPartical.layer = index + 8;
+	}
+
+	public void SetCameraCullingMask(int index ){
+		int bloodLayer = ( 1 - index ) + 8;
+		camera.cullingMask = ~(1 << bloodLayer);
+	}
+
+	public void EnableVisualEffect(){
 		if (blurEffect != null) {
 			blurEffect.enabled = true;
 		}
@@ -82,7 +106,7 @@ public class EyesLostVisualEffect : MonoBehaviour {
 		}
 	}
 
-	private void DisableVisualEffect(){
+	public void DisableVisualEffect(){
 		if (blurEffect != null) {
 			blurEffect.enabled = false;
 		}

@@ -71,6 +71,16 @@ public class PlayerManager
 		hpp.transform.localRotation = Quaternion.identity;
 		p.hpPanel = hpp.GetComponent<HPPanel> ();
 
+		GameObject sacrificeVisualEffectHandler = Resources.Load<GameObject> ("Prefabs/SacrificeVisualEffectHandler");
+		GameObject se =  GameObject.Instantiate (sacrificeVisualEffectHandler);
+		se.transform.SetParent (p.gameObject.transform);
+		se.transform.localScale = Vector3.one;
+		se.transform.localPosition = Vector3.zero;
+		se.transform.localRotation = Quaternion.identity;
+
+		SacrificeVisualEffectHandler sveHandler = se.GetComponent<SacrificeVisualEffectHandler>();
+		sveHandler.eyesLostVisualEffect.camera = p.camera;
+		p.SVEHandler = sveHandler;
 		return p;
 	}
 
@@ -85,6 +95,9 @@ public class PlayerManager
 	{
 		Player player = players[index];
 		player.CutEye ();
+
+		Player enemy = players[1 - index];
+		enemy.CloseEye ();
 		CurseOthers (index);
 	}
 

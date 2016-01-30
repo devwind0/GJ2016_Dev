@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
 	public HPPanel hpPanel { get; set; }
 
 	public Transform Canvas;
+	public Camera camera;
+	public SacrificeVisualEffectHandler SVEHandler;
 
 	private void Start()
 	{
@@ -31,6 +33,12 @@ public class Player : MonoBehaviour {
 		//TODO do things when eyes are cut, play Cut Eye VFX, maybe not
 
 		//Destroy (Eye);
+		SVEHandler.EnableEyesLostVisualEffect( Index );
+		//Make enemy could not see the blood vfx
+	}
+
+	public void CloseEye(){
+		SVEHandler.CloseEyesLostVisualEffect (Index);
 	}
 
 	public void CutHand()

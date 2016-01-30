@@ -6,7 +6,7 @@ public class BaseContext : MonoBehaviour {
 	public Transform[] PlayerSpots;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		PlayerManager.Singleton.Init (PlayerSpots);
 	}
