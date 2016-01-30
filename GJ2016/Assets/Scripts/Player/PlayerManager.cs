@@ -25,13 +25,23 @@ public class PlayerManager
 		
 	}
 
-	public void Init()
+	public void Init(Transform[] playerSpots)
 	{
 		//TODO Add each player to each camera
 		for(int i = 0; i < GameConstants.PlayerCount; ++i)
 		{
 			players [i] = CreatePlayer (i);
+			players [i].transform.position = playerSpots [i].position;
+			players [i].transform.rotation = playerSpots [i].rotation;
 		}
+
+		CreateTerrain ();
+	}
+
+	private void CreateTerrain()
+	{
+		GameObject terrainPrefab =  Resources.Load<GameObject> ("Prefabs/Terrain");
+		GameObject.Instantiate (terrainPrefab, Vector3.zero, Quaternion.identity);
 	}
 
 	public Player CreatePlayer(int index)
