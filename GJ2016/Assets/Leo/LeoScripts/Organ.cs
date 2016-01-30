@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 
 
-
-[RequireComponent(typeof(BoxCollider))]
 public class Organ : MonoBehaviour {
 
     public Material _hightLitMaterial;
@@ -35,7 +33,7 @@ public class Organ : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void OnSelectStart()
+	public void OnSelectStart()
     {
         if (_renders == null)
             return;
@@ -45,13 +43,13 @@ public class Organ : MonoBehaviour {
             for (int i = 0; i < mr.materials.Length; ++i)
             {
                 mr.materials[i] = _hightLitMaterial;
-               // mr.materials[i].color = Color.red;
+                mr.materials[i].color = Color.red;
             }
         }
         _onSelected = true;
     }
 
-    void OnSelectEnd()
+    public void OnSelectEnd()
     {
         if (_renders == null)
             return;
@@ -61,21 +59,10 @@ public class Organ : MonoBehaviour {
             for (int i = 0; i < mr.materials.Length; ++i)
             {
                 mr.materials[i] = _defaultMats[index++];
-             //   mr.materials[i].color = Color.grey;
+                mr.materials[i].color = Color.grey;
             }
         }
         _onSelected = false;
     }
 
-    void OnTriggerEnter(Collider i_other)
-    {
-        Debug.Log("Entered");
-        OnSelectStart();
-    }
-
-    void OnTriggerExit(Collider i_other)
-    {
-        Debug.Log("Exited");
-        OnSelectEnd();
-    }
 }
