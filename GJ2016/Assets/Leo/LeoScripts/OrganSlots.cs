@@ -17,7 +17,9 @@ public class OrganSlots : MonoBehaviour {
     public  PlayerEnum _player = PlayerEnum.PlayerA;
     public Organ _currentSelectedOrgan = null;
     public OrganType[] _correctResult;
+	public Transform spawnPosition;
 
+	private bool tokenSpawned = false;
 
     public void SwitchOrgan(Organ organA, Organ organB)
     {
@@ -61,7 +63,39 @@ public class OrganSlots : MonoBehaviour {
                 correctCount++;
             }
         }
+
+		if (correctCount == 4) 
+		{
+			SpawnToken ((int)player);
+		}
         return correctCount;
     }
 
+	private void SpawnToken(int playerIndex)
+	{
+		if (!tokenSpawned) 
+		{
+			tokenSpawned = true;
+			Score score = PlayerManager.Singleton.GetScore (playerIndex);
+			int index = score.GetIndexOfWhatsLeft ();
+			switch (index) 
+			{
+			case 0:
+				SpawnObject ("Prefabs/hand");
+				break;
+			case 1:
+				SpawnObject ("Prefabs/leg");
+				break;
+			case 2:
+				SpawnObject ("Prefabs/eyeball");
+				break;
+			}
+		}
+	}
+
+	private void SpawnObject(string path)
+	{
+		GameObject prefab = Resources.Load<GameObject> (path);
+		GameObject.Instantiate(prefab, spawnPosition.position, spawnPosition.rotation);
+	}
 }

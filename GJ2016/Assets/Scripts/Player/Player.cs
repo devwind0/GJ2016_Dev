@@ -23,6 +23,9 @@ public class Player : MonoBehaviour {
 	public SacrificeVisualEffectHandler SVEHandler;
 	private Score score = new Score ();
 	private bool alterEntered;
+	private bool tokenAreaEntered;
+	int tokenIndex = 0;
+	private GameObject token;
 
 	private void Start()
 	{
@@ -33,7 +36,6 @@ public class Player : MonoBehaviour {
 	public void Cursed()
 	{
 		Debug.Log ("You GOT CURSED");
-		CurseLevel++;
 		//TODO Determine what to do when you are cursed.
 	}
 
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour {
 		//TODO do things when eyes are cut, play Cut Eye VFX, maybe not
 
 		//Destroy (Eye);
+		ReduceHP (20);
 		score.CutOrgan (2);
 		SVEHandler.EnableEyesLostVisualEffect( Index );
 		//Make enemy could not see the blood vfx
@@ -85,7 +88,7 @@ public class Player : MonoBehaviour {
 
 		//SpawnBodyParts ("Prefabs/hand");
 		SVEHandler.EnableHandsVisualEffect(Index);
-
+		ReduceHP (20);
 		score.CutOrgan (0);
 		//SpawnBodyParts ("Prefabs/hand");
 
@@ -99,7 +102,7 @@ public class Player : MonoBehaviour {
 		FirstPersonController controller = this.GetComponent<FirstPersonController>();
 		controller.SetWalkingSpeed (1.0f);
 		controller.SetRunningSpeed (1.0f);
-
+		ReduceHP (20);
 		score.CutOrgan (1);
 		//SpawnBodyParts ("Prefabs/leg");
 		SVEHandler.EnableLegsVisualEffect(Index);
@@ -140,12 +143,31 @@ public class Player : MonoBehaviour {
 
 	private void Update()
 	{
-		if (alterEntered && (Input.GetButtonDown ("CarryOrgan-controller") || Input.GetButtonDown ("CarryOrgan-keyboard"))) 
+		if ((Input.GetButtonDown ("CarryOrgan-controller") || Input.GetButtonDown ("CarryOrgan-keyboard"))) 
 		{
 			Debug.LogError ("Button Pressed");
-			score.SendOrgan ();
-			CheckWinCondition ();
+			if (alterEntered) 
+			{
+				score.SendOrgan ();
+				CheckWinCondition ();
+				score.DebugScore ();
+			}
+
+			if (tokenAreaEntered)
+			{
+				score.CarryOrgan (tokenIndex);
+				if (token != null) {
+					Destroy (token);
+				}
+			}
 		}
+	}
+
+	public void EnterTokenArea(bool isTrue, int tokenIndex, GameObject token)
+	{
+		tokenAreaEntered = isTrue;
+		this.tokenIndex = tokenIndex;
+		this.token = token;
 	}
 
 	private void CheckWinCondition()

@@ -22,6 +22,7 @@ public class Score
 	public void CutOrgan(int index)
 	{
 		cutState [index] = true;
+		CarryOrgan (index);
 	}
 
 	public void CarryOrgan(int index)
@@ -48,19 +49,24 @@ public class Score
 
 		return true;
 	}
-
+	public void DebugScore()
+	{
+		for (int i = 0; i < 3; ++i) {
+			Debug.LogError (i.ToString () + " " + organs [i].ToString ());
+		}
+	}
 	public int GetIndexOfWhatsLeft()
 	{
 		List<int> indices = new List<int> ();
 		for (int i = 0; i < 3; ++i) 
 		{
-			if (organs [i] == OrganState.Sent) 
+			if (organs [i] == OrganState.None || organs [i] == OrganState.Carry ) 
 			{
 				indices.Add (i);
 			}
 		}
 
 		int count = indices.Count;
-		return Random.Range (0, count);
+		return indices[Random.Range (0, count)];
 	}
 }

@@ -3,8 +3,8 @@ using System.Collections;
 
 public enum PlayerEnum
 {
-    PlayerA,
-    PlayerB,
+    PlayerA = 0,
+    PlayerB = 1
 }
 
 [RequireComponent(typeof(Camera))]

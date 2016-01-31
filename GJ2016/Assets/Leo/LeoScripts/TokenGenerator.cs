@@ -7,8 +7,8 @@ public class TokenGenerator : MonoBehaviour {
 
     BoxCollider _tokenTrigger = null;
     public PlayerEnum _player = PlayerEnum.PlayerA;
-    public GameObject _tokenPrefab = null;
     public Transform _tokenGenPos = null;
+	private bool tokenSpawned = false;
     // Use this for initialization
     void Start () {
         _tokenTrigger = GetComponent<BoxCollider>();
@@ -33,6 +33,35 @@ public class TokenGenerator : MonoBehaviour {
         }
         Score playerScore = PlayerManager.Singleton.GetScore(playerIndex);
         int tokenIndex = playerScore.GetIndexOfWhatsLeft();
-        Instantiate(_tokenPrefab, _tokenGenPos.position, Quaternion.identity);
+		SpawnToken (tokenIndex);
     }
+
+	private void SpawnToken(int tokenIndex)
+	{
+		if (!tokenSpawned) 
+		{
+			tokenSpawned = true;
+			Score score = PlayerManager.Singleton.GetScore (tokenIndex);
+			int index = score.GetIndexOfWhatsLeft ();
+			switch (index) 
+			{
+			case 0:
+				SpawnObject ("Prefabs/hand");
+				break;
+			case 1:
+				SpawnObject ("Prefabs/leg");
+				break;
+			case 2:
+				SpawnObject ("Prefabs/eyeball");
+				break;
+			}
+		}
+	}
+
+	private void SpawnObject(string path)
+	{
+		Debug.LogError ("Spawn " + path);
+		GameObject prefab = Resources.Load<GameObject> (path);
+		GameObject.Instantiate(prefab, _tokenGenPos.position, _tokenGenPos.rotation);
+	}
 }

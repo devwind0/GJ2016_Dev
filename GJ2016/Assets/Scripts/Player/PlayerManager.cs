@@ -86,6 +86,11 @@ public class PlayerManager
 		return p;
 	}
 
+	public void EnterOrganRegion()
+	{
+		
+	}
+
 	public Score GetScore(int index)
 	{
 		return players [index].Score;
@@ -142,5 +147,10 @@ public class PlayerManager
 	public void EnterAlter(int index, bool isTrue)
 	{
 		players [index].EnterAlter (isTrue);
+	}
+
+	public void EnterTokenArea(int index, int tokenIndex, bool isTrue, GameObject token)
+	{
+		players [index].EnterTokenArea (isTrue, tokenIndex, token);
 	}
 }
