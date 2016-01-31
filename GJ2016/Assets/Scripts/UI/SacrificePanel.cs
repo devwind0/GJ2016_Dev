@@ -27,14 +27,23 @@ public class SacrificePanel : MonoBehaviour {
 		OptionPanel.SetActive (isPanelActive);
 	}
 
-	void Update(){
-		
+	void Update()
+	{
+		if ((Input.GetButtonDown ("OpenSacrifice-controller") && Index == 1)
+			|| (Input.GetButtonDown ("OpenSacrifice-keyboard") && Index == 0)) 
+		{
+			isPanelActive = !isPanelActive;
+			OptionPanel.SetActive (isPanelActive);
+		}
 	}
 
 	public void OnSacrificeButtonClicked()
 	{
-		isPanelActive = !isPanelActive;
-		OptionPanel.SetActive (isPanelActive);
+		//if ((Input.GetButtonDown ("OpenSacrifice-controller") || Input.GetButtonDown ("OpenSacrifice-keyboard"))) 
+		//{
+			isPanelActive = !isPanelActive;
+			OptionPanel.SetActive (isPanelActive);
+		//}
 	}
 
 	public void OnCutHandButtonClicked()

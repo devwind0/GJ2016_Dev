@@ -100,8 +100,8 @@ public class Player : MonoBehaviour {
 		Debug.LogError ("You cut your leg " + Index.ToString());
 		//TODO do things when legs are cut, Play Cut Leg VFX, maybe not
 		FirstPersonController controller = this.GetComponent<FirstPersonController>();
-		controller.SetWalkingSpeed (1.0f);
-		controller.SetRunningSpeed (1.0f);
+		controller.SetWalkingSpeed (2.5f);
+		controller.SetRunningSpeed (3.0f);
 		ReduceHP (20);
 		score.CutOrgan (1);
 		//SpawnBodyParts ("Prefabs/leg");
