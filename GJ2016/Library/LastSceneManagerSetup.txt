@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Jinghui/Scenes/Game_Over_Scene.unity
+- path: Assets/Content/Resources/Scenes/Initial.unity
   isLoaded: 1
   isActive: 1
