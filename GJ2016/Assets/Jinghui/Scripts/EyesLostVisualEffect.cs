@@ -87,6 +87,11 @@ public class EyesLostVisualEffect : MonoBehaviour {
 
 	public void SetBloodEffectLayer( int index ){
 		bloodPartical.layer = index + 8;
+
+		for(int i =0 ;i < bloodPartical.transform.childCount;i++)
+		{
+			bloodPartical.transform.GetChild(i).gameObject.layer = index + 8;
+		}
 	}
 
 	public void SetCameraCullingMask(int index ){
