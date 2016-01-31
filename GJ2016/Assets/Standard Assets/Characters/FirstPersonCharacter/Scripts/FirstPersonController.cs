@@ -73,6 +73,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_WalkSpeed = walkingSpeed;
 		}
 
+		public void SetRunningSpeed(float runningSpeed)
+		{
+			m_RunSpeed = runningSpeed;
+		}
 
         // Update is called once per frame
         private void Update()

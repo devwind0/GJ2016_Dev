@@ -88,6 +88,8 @@ public class Player : MonoBehaviour {
 		//TODO do things when legs are cut, Play Cut Leg VFX, maybe not
 		FirstPersonController controller = this.GetComponent<FirstPersonController>();
 		controller.SetWalkingSpeed (1.0f);
+		controller.SetRunningSpeed (1.0f);
+
 		score.CutOrgan (1);
 		//SpawnBodyParts ("Prefabs/leg");
 		SVEHandler.EnableLegsVisualEffect();
