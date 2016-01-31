@@ -14,7 +14,10 @@ public class OrganSlots : MonoBehaviour {
     [SerializeField]
     Organ[] _organs;
 
+    public  PlayerEnum _player = PlayerEnum.PlayerA;
     public Organ _currentSelectedOrgan = null;
+    public OrganType[] _correctResult;
+
 
     public void SwitchOrgan(Organ organA, Organ organB)
     {
@@ -42,6 +45,19 @@ public class OrganSlots : MonoBehaviour {
             }
         }
         return index;
+    }
+
+    public int GetCorrectCount()
+    {
+        int correctCount = 0;
+        for (int i = 0; i < _organs.Length && i < _correctResult.Length; ++i)
+        {
+            if (_organs[i]._organType == _correctResult[i])
+            {
+                correctCount++;
+            }
+        }
+        return correctCount;
     }
 
 }

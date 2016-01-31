@@ -34,8 +34,20 @@ public class Organ : MonoBehaviour {
     {
         if (_slots == null)
             return;
+        // Make sure that we got input from playerA or,
+        // we get the input from playerB.
+        bool playerAInput = Input.GetButtonDown("Fire2") ;
+        bool playerBInput = Input.GetButtonDown("Fire1");
+        if (_slots._player == PlayerEnum.PlayerA && !playerAInput) 
+        {
+            return;
+        }
+        if (_slots._player == PlayerEnum.PlayerB && !playerBInput)
+        {
+            return;
+        }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (playerAInput || playerBInput)
         {
             if (_onHighLight)
             {

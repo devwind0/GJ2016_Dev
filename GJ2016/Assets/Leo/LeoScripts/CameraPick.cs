@@ -4,26 +4,21 @@ using System.Collections;
 [RequireComponent(typeof(Camera))]
 public class CameraPick : MonoBehaviour {
 
-	// Update is called once per frame
-	void Update () {
-        /*
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
-        {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Organ"))
-            {
-                Debug.Log("Orgn" + hit.collider.name);
-            }
-        }
-        */
+
+    void Start()
+    {
+
     }
+
 
     void OnTriggerEnter(Collider i_other)
     {
+        Debug.Log("Enter Trigger" + i_other.name);
         Organ organ = i_other.GetComponent<Organ>();
         if (organ == null)
             return;
         organ.OnHighLightStart();
+
     }
 
 
