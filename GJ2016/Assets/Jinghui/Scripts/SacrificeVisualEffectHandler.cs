@@ -5,7 +5,7 @@ public class SacrificeVisualEffectHandler : MonoBehaviour {
 
 	public EyesLostVisualEffect eyesLostVisualEffect;
 	public LegsLostVisualEffectHandler legsLostVisualEffect;
-	public HandsLostVisualEffectHandler handsLostVisualEffectHandler;
+	public HandLostVisualEffectHandler handsLostVisualEffectHandler;
 
 	void Start () {
 	

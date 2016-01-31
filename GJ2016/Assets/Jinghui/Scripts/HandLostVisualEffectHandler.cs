@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HandsLostVisualEffectHandler : MonoBehaviour {
+public class HandLostVisualEffectHandler : MonoBehaviour {
 
 	public GameObject Hands;
 	public AudioSource audio;
