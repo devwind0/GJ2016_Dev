@@ -37,7 +37,7 @@ public class PlayerManager
 
 		CreateTerrain ();
 	}
-
+		
 	private void CreateTerrain()
 	{
 		GameObject terrainPrefab =  Resources.Load<GameObject> ("Prefabs/Terrain");
@@ -84,6 +84,11 @@ public class PlayerManager
 		return p;
 	}
 
+	public Score GetScore(int index)
+	{
+		return players [index].Score;
+	}
+
 	public void CutLeg(int index)
 	{
 		Player player = players[index];
@@ -108,6 +113,12 @@ public class PlayerManager
 		CurseOthers (index);
 	}
 
+	public void SendOrgan(int index)
+	{
+		Player player = players [index];
+		player.SendOrgan ();
+	}
+
 	public void CurseOthers(int playerIndex)
 	{
 		//make all the other guys cursed
@@ -118,5 +129,10 @@ public class PlayerManager
 			Player other = players [i];
 			other.Cursed ();
 		}
+	}
+
+	public void EnterAlter(int index, bool isTrue)
+	{
+		players [index].EnterAlter (isTrue);
 	}
 }

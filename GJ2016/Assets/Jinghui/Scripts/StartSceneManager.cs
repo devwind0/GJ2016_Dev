@@ -3,8 +3,8 @@ using System.Collections;
 
 public class StartSceneManager : MonoBehaviour {
 
-	public void OnStartButtonClick(){
-		Application.LoadLevel ("LeoTestScene");
+	public void OnStartButtonClick() {
+		Application.LoadLevel ("Initial");
 	}
 
 	public void OnCreditsButtonClick(){
