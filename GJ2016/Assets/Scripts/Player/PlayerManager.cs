@@ -15,7 +15,7 @@ public class PlayerManager
             return instance;
         }
     }
-
+		
     private static PlayerManager instance;
 
 	private Player[] players = new Player[GameConstants.PlayerCount];

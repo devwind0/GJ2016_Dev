@@ -41,6 +41,7 @@ public class HandLostVisualEffectHandler : MonoBehaviour {
 		} 
 		else {
 			Hands.gameObject.SetActive (false);
+			m_handsLostVisualEffectFlag = false;
 		}
 	}
 

@@ -41,6 +41,7 @@ public class LegsLostVisualEffectHandler : MonoBehaviour {
 		} 
 		else {
 			Legs.gameObject.SetActive (false);
+			m_legsLostVisualEffectFlag = false;
 		}
 	}
 
