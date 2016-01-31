@@ -72,13 +72,13 @@ public class Player : MonoBehaviour {
 		Debug.LogError ("You cut your hand " + Index.ToString());
 		//TODO do things when hands are cut, play Cut Eye VFX, maybe not
 		//Destroy (Hand);
-<<<<<<< HEAD
+
 		//SpawnBodyParts ("Prefabs/hand");
 		SVEHandler.EnableHandsVisualEffect();
-=======
+
 		score.CutOrgan (0);
-		SpawnBodyParts ("Prefabs/hand");
->>>>>>> origin/master
+		//SpawnBodyParts ("Prefabs/hand");
+
 	}
 
 	//index 1
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
 		FirstPersonController controller = this.GetComponent<FirstPersonController>();
 		controller.SetWalkingSpeed (1.0f);
 		score.CutOrgan (1);
-		SpawnBodyParts ("Prefabs/leg");
+		//SpawnBodyParts ("Prefabs/leg");
 		SVEHandler.EnableLegsVisualEffect();
 	}
 
