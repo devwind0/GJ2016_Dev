@@ -21,20 +21,18 @@ public class CameraPick : MonoBehaviour {
     void OnTriggerEnter(Collider i_other)
     {
         Organ organ = i_other.GetComponent<Organ>();
-        OrganSlot slot = i_other.GetComponent<OrganSlot>();
-        if (organ == null && slot == null)
+        if (organ == null)
             return;
-        organ.OnSelectStart();
+        organ.OnHighLightStart();
     }
 
 
     void OnTriggerExit(Collider i_other)
     {
         Organ organ = i_other.GetComponent<Organ>();
-        OrganSlot slot = i_other.GetComponent<OrganSlot>();
-        if (organ == null && slot == null)
+        if (organ == null)
             return;
-        organ.OnSelectEnd();
+        organ.OnHihgLightEnd();
 
     }
 
