@@ -61,7 +61,7 @@ public class SacrificePanel : MonoBehaviour {
 			}
 
 			if (Input.GetKeyDown (KeyCode.UpArrow) ||
-				Input.GetAxis ("Axis-controller") > 0) 
+				Input.GetButtonDown ("Axis-controller")) 
 			{
 				selectionIndex--;
 				if (selectionIndex < 0) {
@@ -69,9 +69,7 @@ public class SacrificePanel : MonoBehaviour {
 				}
 				SetArrow (selectionIndex);
 			}
-
-			if (Input.GetKeyDown (KeyCode.DownArrow) ||
-				Input.GetAxis ("Axis-controller") < 0) 
+			if (Input.GetKeyDown (KeyCode.DownArrow)) 
 			{
 				selectionIndex++;
 				if (selectionIndex > 2) {
