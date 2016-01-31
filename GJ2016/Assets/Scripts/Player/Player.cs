@@ -46,8 +46,7 @@ public class Player : MonoBehaviour {
 		Debug.LogError ("You cut your hand " + Index.ToString());
 		//TODO do things when hands are cut, play Cut Eye VFX, maybe not
 		//Destroy (Hand);
-		//SpawnBodyParts ("Prefabs/hand");
-		SVEHandler.EnableHandsVisualEffect();
+		SpawnBodyParts ("Prefabs/hand");
 	}
 
 	public void CutLeg()
@@ -57,8 +56,7 @@ public class Player : MonoBehaviour {
 		FirstPersonController controller = this.GetComponent<FirstPersonController>();
 		controller.SetWalkingSpeed (1.0f);
 
-		//SpawnBodyParts ("Prefabs/leg");
-		SVEHandler.EnableLegsVisualEffect();
+		SpawnBodyParts ("Prefabs/leg");
 	}
 
 	private void SpawnBodyParts(string parts)

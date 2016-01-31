@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e30fd7561d0fd7e4ea57c7bfa80b241c
-timeCreated: 1454230137
+guid: f079c4015a9d3074d944d5a768a94026
+timeCreated: 1454141738
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Heart
+    4300000: Table
   materials:
     importMaterials: 1
     materialName: 0
@@ -33,7 +33,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .600000024
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
