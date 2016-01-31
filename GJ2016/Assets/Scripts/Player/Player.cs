@@ -66,6 +66,16 @@ public class Player : MonoBehaviour {
 		SVEHandler.CloseEyesLostVisualEffect (Index);
 	}
 
+	public void CloseHands()
+	{
+		SVEHandler.CloseHandsLostVisualEffect (Index);
+	}
+
+	public void CloseLegs()
+	{
+		SVEHandler.CloseLegsLostVisualEffect (Index);
+	}
+
 	//index 0
 	public void CutHand()
 	{
@@ -74,7 +84,7 @@ public class Player : MonoBehaviour {
 		//Destroy (Hand);
 
 		//SpawnBodyParts ("Prefabs/hand");
-		SVEHandler.EnableHandsVisualEffect();
+		SVEHandler.EnableHandsVisualEffect(Index);
 
 		score.CutOrgan (0);
 		//SpawnBodyParts ("Prefabs/hand");
@@ -92,7 +102,7 @@ public class Player : MonoBehaviour {
 
 		score.CutOrgan (1);
 		//SpawnBodyParts ("Prefabs/leg");
-		SVEHandler.EnableLegsVisualEffect();
+		SVEHandler.EnableLegsVisualEffect(Index);
 	}
 
 	private void SpawnBodyParts(string parts)

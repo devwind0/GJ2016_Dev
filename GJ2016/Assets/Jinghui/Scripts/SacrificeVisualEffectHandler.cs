@@ -19,20 +19,26 @@ public class SacrificeVisualEffectHandler : MonoBehaviour {
 		eyesLostVisualEffect.EyesLostVisualEffectFlag = true;
 		eyesLostVisualEffect.SetBloodEffectLayer(index);
 	}
-
-	public void DisableEyesLostVisualEffect( ){
 		
+	public void EnableLegsVisualEffect(int index ){
+		legsLostVisualEffect.LegsLostVisualEffectFlag = true;
+		legsLostVisualEffect.SetBloodEffectLayer(index);
+	}
+
+	public void EnableHandsVisualEffect(int index){
+		handsLostVisualEffectHandler.HandsLostVisualEffectFlag = true;
+		handsLostVisualEffectHandler.SetBloodEffectLayer(index);
 	}
 
 	public void CloseEyesLostVisualEffect( int index ){
 		eyesLostVisualEffect.SetCameraCullingMask(index);
 	}
 
-	public void EnableLegsVisualEffect(){
-		legsLostVisualEffect.LegsLostVisualEffectFlag = true;
+	public void CloseLegsLostVisualEffect( int index ){
+		legsLostVisualEffect.SetCameraCullingMask(index);
 	}
 
-	public void EnableHandsVisualEffect(){
-		handsLostVisualEffectHandler.HandsLostVisualEffectFlag = true;
+	public void CloseHandsLostVisualEffect( int index ){
+		handsLostVisualEffectHandler.SetCameraCullingMask(index);
 	}
 }

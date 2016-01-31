@@ -88,9 +88,25 @@ public class EyesLostVisualEffect : MonoBehaviour {
 	public void SetBloodEffectLayer( int index ){
 		bloodPartical.layer = index + 8;
 
-		for(int i =0 ;i < bloodPartical.transform.childCount;i++)
+		SetLayerRecursively (bloodPartical, index + 8);
+	}
+
+	void SetLayerRecursively(GameObject obj, int newLayer)
+	{
+		if (null == obj)
 		{
-			bloodPartical.transform.GetChild(i).gameObject.layer = index + 8;
+			return;
+		}
+
+		obj.layer = newLayer;
+
+		foreach (Transform child in obj.transform)
+		{
+			if (null == child)
+			{
+				continue;
+			}
+			SetLayerRecursively(child.gameObject, newLayer);
 		}
 	}
 

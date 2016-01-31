@@ -3,6 +3,8 @@ using System.Collections;
 
 public class HandLostVisualEffectHandler : MonoBehaviour {
 
+	public Camera camera;
+
 	public GameObject Hands;
 	public AudioSource audio;
 	public float ShowTime = 6.0f;
@@ -47,5 +49,35 @@ public class HandLostVisualEffectHandler : MonoBehaviour {
 
 	private void ShowHands(){
 		Hands.transform.eulerAngles += new Vector3( 0.0f, Time.deltaTime * 70.0f, 0.0f );
+	}
+
+	public void SetBloodEffectLayer( int index ){
+		Hands.layer = index + 8;
+
+		SetLayerRecursively (Hands, index + 8);
+	}
+
+	void SetLayerRecursively(GameObject obj, int newLayer)
+	{
+		if (null == obj)
+		{
+			return;
+		}
+
+		obj.layer = newLayer;
+
+		foreach (Transform child in obj.transform)
+		{
+			if (null == child)
+			{
+				continue;
+			}
+			SetLayerRecursively(child.gameObject, newLayer);
+		}
+	}
+
+	public void SetCameraCullingMask(int index ){
+		int bloodLayer = ( 1 - index ) + 8;
+		camera.cullingMask = ~(1 << bloodLayer);
 	}
 }

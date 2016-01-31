@@ -80,6 +80,8 @@ public class PlayerManager
 
 		SacrificeVisualEffectHandler sveHandler = se.GetComponent<SacrificeVisualEffectHandler>();
 		sveHandler.eyesLostVisualEffect.camera = p.camera;
+		sveHandler.handsLostVisualEffectHandler.camera = p.camera;
+		sveHandler.legsLostVisualEffect.camera = p.camera;
 		p.SVEHandler = sveHandler;
 		return p;
 	}
@@ -93,6 +95,9 @@ public class PlayerManager
 	{
 		Player player = players[index];
 		player.CutLeg ();
+
+		Player enemy = players[1 - index];
+		enemy.CloseLegs ();
 		CurseOthers (index);
 	}
 
@@ -110,6 +115,9 @@ public class PlayerManager
 	{
 		Player player = players[index];
 		player.CutHand ();
+
+		Player enemy = players[1 - index];
+		enemy.CloseHands ();
 		CurseOthers (index);
 	}
 
