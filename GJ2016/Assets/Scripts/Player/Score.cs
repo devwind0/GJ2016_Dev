@@ -11,7 +11,12 @@ public enum OrganState
 
 public class Score 
 {
-	private OrganState[] organs = new OrganState[3];  
+    public OrganState[] GetOrganStats()
+    {
+        return organs;
+    }
+
+    private OrganState[] organs = new OrganState[3];  
 	private bool[] cutState = new bool[3];
 
 	public void CutOrgan(int index)
