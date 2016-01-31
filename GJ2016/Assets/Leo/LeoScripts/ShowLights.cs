@@ -14,7 +14,7 @@ public class ShowLights : MonoBehaviour {
 	void Update () {
         if (_organSlots == null)
             return;
-        int correctCount = _organSlots.GetCorrectCount();
+        int correctCount = _organSlots.GetCorrectCount(_organSlots._player);
         MeshRenderer[] meshRenders = GetComponentsInChildren<MeshRenderer>();
         for(int i = 0; i < meshRenders.Length; ++i)
         {

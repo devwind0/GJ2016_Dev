@@ -13,12 +13,10 @@ public class CameraPick : MonoBehaviour {
 
     void OnTriggerEnter(Collider i_other)
     {
-        Debug.Log("Enter Trigger" + i_other.name);
         Organ organ = i_other.GetComponent<Organ>();
         if (organ == null)
             return;
         organ.OnHighLightStart();
-
     }
 
 

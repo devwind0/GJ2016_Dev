@@ -47,8 +47,12 @@ public class OrganSlots : MonoBehaviour {
         return index;
     }
 
-    public int GetCorrectCount()
+    public int GetCorrectCount(PlayerEnum player)
     {
+        if (_player != player)
+        {
+            return -1;
+        }
         int correctCount = 0;
         for (int i = 0; i < _organs.Length && i < _correctResult.Length; ++i)
         {
